@@ -19,7 +19,7 @@
     "fileMatch": [
       "(^|/)MODULE\\.bazel$",
       "(^|/)WORKSPACE(|\\.bazel)$",
-      "*.bazel",
+      "\\.bazel$",
       "\\.bzl$"
     ]
   },
