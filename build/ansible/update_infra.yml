@@ -1,0 +1,12 @@
+---
+- name: Update infra
+  hosts: infra
+  roles:
+    - role: odoo
+      when: (lookup('env', 'ODOO_CHANGED', default='false') | upper) == "TRUE"
+    - role: wiki
+      when: (lookup('env', 'WIKI_CHANGED', default='false') | upper) == "TRUE"
+    - role: metrics
+      when: (lookup('env', 'METRICS_CHANGED', default='false') | upper) == "TRUE"
+    - role: traefik
+      when: (lookup('env', 'TRAEFIK_CHANGED', default='false') | upper) == "TRUE"

@@ -1,0 +1,5 @@
+---
+- name: Update observability
+  hosts: all
+  roles:
+    - role: observ

@@ -1,0 +1,9 @@
+---
+- name: Update stage
+  hosts: all
+  roles:
+    - role: web
+      when: (lookup('env', 'WEB_CHANGED', default='false') | upper) == "TRUE"
+    - role: backend
+      when: (lookup('env', 'BACKEND_CHANGED', default='false') | upper) == "TRUE"
+    # TODO(mrdan4es): (lookup('env', 'THIRD_PARTY_CHANGED', default='false') | upper) == "TRUE" когда разделим backend и third_party компоузы

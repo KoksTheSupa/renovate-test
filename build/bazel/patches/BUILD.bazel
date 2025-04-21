@@ -1,0 +1,4 @@
+exports_files([
+    "com_github_kolesa_team_go_webp.patch",
+    "com_github_stackb_rules_proto.patch",
+])

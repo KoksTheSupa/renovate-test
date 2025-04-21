@@ -1,0 +1,123 @@
+oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
+oci.pull(
+    name = "distroless_base_debian12",
+    digest = "sha256:125eb09bbd8e818da4f9eac0dfc373892ca75bec4630aa642d315ecf35c1afb7",
+    image = "gcr.io/distroless/base-debian12",
+    platforms = [
+        "linux/amd64",
+    ],
+)
+
+third_party = [
+    {
+        "name": "node",  # node:22.11.0-alpine3.20
+        "digest": "sha256:acfe48528d337d95603fbeaf249da67a07c4082e22f2c6ec85cf0fdffcfd63ff",
+        "image": "node",
+    },
+    {
+        "name": "traefik",  # traefik:3.2.0
+        "digest": "sha256:e8a75d3640365b5a9f2b5fbcd8c745becdceabf3b7dc4e202094fb2bf03c1d37",
+        "image": "traefik",
+    },
+    {
+        "name": "envoyproxy",  # envoyproxy/envoy:distroless-v1.32.2
+        "digest": "sha256:1ffc81d672939431372884117a09676770fcb0a751526d1e81869f9eb2d9b886",
+        "image": "docker.io/envoyproxy/envoy",
+    },
+    {
+        "name": "consul",  # hashicorp/consul:1.19.1
+        "digest": "sha256:f38409c5b46f6c1fec96da3cd761a38badefb30961b60ddb4fd14fd1e2d89147",
+        "image": "docker.io/hashicorp/consul",
+    },
+    {
+        "name": "postgres",  # postgres:16.4-bookworm
+        "digest": "sha256:a08328446f05171aa9df4aaafa5f381e4e415c8540ab4785eecf4bbe9caebe50",
+        "image": "postgres",
+    },
+    {
+        "name": "redis",  # redis:7.4.0-alpine3.20
+        "digest": "sha256:1e31565f746dc3c88b140a899d974b45ddc25eaaffac76bf7fd504c75c4fb81b",
+        "image": "redis",
+    },
+    {
+        "name": "nginx",  # nginx:1.27.1-alpine3.20-slim
+        "digest": "sha256:15d20a9e80b094bc7fea73c8207bac1d2196d02251df24c6bbc58b19af1b4fd5",
+        "image": "nginx",
+    },
+    {
+        "name": "crowdsec",  # crowdsecurity/crowdsec:v1.6.4-slim
+        "digest": "sha256:c456f6fd64a2147e0e38248d77d0518d22552a7cfeafbe66c7105c10fc51ea7b",
+        "image": "docker.io/crowdsecurity/crowdsec",
+    },
+    {
+        "name": "tempo",  # grafana/tempo:2.5.0
+        "digest": "sha256:be9fb28c0479e90e1e3d65bf94578e312c55d708250b2f018c1f6bb4c1e56788",
+        "image": "docker.io/grafana/tempo",
+    },
+    {
+        "name": "odoo",  # odoo:16.0-20240730
+        "digest": "sha256:4fdcda28649de5559d7aa705b928e773f07f180ce578235e4e6de46d9cbaa88e",
+        "image": "odoo",
+    },
+    {
+        "name": "prometheus",  # prom/prometheus:v2.53.1
+        "digest": "sha256:e815f1c12acfcbbcc57a27248db91d3e22d9ec33347ba292e8e5a19151d941ec",
+        "image": "docker.io/prom/prometheus",
+    },
+    {
+        "name": "http_exporter",  # mrdan4es/http_exporter:14895ba7218f83f2c916cd0ca02dd550c2e16bd3
+        "digest": "sha256:cbb2478694c8db79b2ec47fefe4b1e71b308e3105a0ff1bcf729be61d4036c34",
+        "image": "ghcr.io/mrdan4es/http_exporter",
+    },
+    {
+        "name": "mattermost",  # mattermost/mattermost-team-edition:9.11.5,
+        "digest": "sha256:aeec16e8937a431346f12288e0ced9a30903e544601d5e174e8d3345b54f5250",
+        "image": "docker.io/mattermost/mattermost-team-edition",
+    },
+    {
+        "name": "loki",  # grafana/loki:3.1.1
+        "digest": "sha256:609c03d2e9becb0bb6b5f4f7e88d05e38321520c23e02e8b00c1caaf60b13523",
+        "image": "docker.io/grafana/loki",
+    },
+    {
+        "name": "promtail",  # grafana/promtail:3.1.1
+        "digest": "sha256:34a7b851f2f300e35d6b37020aa62c5454d07a40b8ce655a9a1d3eefbb8ae333",
+        "image": "docker.io/grafana/promtail",
+    },
+    {
+        "name": "redpanda",  # redpandadata/redpanda:v24.2.13
+        "digest": "sha256:916c4825960c0ed7779bfd29ec7e0a901148f53a8eeca2f62f42a3d045be83d8",
+        "image": "docker.io/redpandadata/redpanda",
+    },
+]
+
+[
+    oci.pull(
+        name = i["name"],
+        digest = i["digest"],
+        image = i["image"],
+    )
+    for i in third_party
+]
+
+use_repo(
+    oci,
+    "consul",
+    "crowdsec",
+    "distroless_base_debian12",
+    "distroless_base_debian12_linux_amd64",
+    "envoyproxy",
+    "http_exporter",
+    "loki",
+    "mattermost",
+    "nginx",
+    "node",
+    "odoo",
+    "postgres",
+    "prometheus",
+    "promtail",
+    "redis",
+    "redpanda",
+    "tempo",
+    "traefik",
+)

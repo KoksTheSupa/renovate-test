@@ -1,0 +1,23 @@
+---
+- name: Tear down existing services
+  community.docker.docker_compose_v2:
+    project_src: "/root/stage"
+    files: "docker-compose.web.yml"
+    state: "absent"
+
+- name: Copy docker-compose to remote server
+  ansible.builtin.copy:
+    src: "../../deployments/stage/docker-compose.web.yml"
+    dest: "/root/stage/docker-compose.web.yml"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+
+- name: Run docker-compose
+  community.docker.docker_compose_v2:
+    project_src: "/root/stage"
+    files: "docker-compose.web.yml"
+    build: "never"
+    state: "present"
+    pull: "always"
+    remove_orphans: "true"

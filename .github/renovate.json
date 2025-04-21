@@ -1,0 +1,32 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "platform": "github",
+  "dependencyDashboard": true,
+  "enabledManagers": ["npm", "bazel"],
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchManagers": ["bazel"],
+      "groupName": "Bazel dependencies"
+    }
+  ],
+  "bazel": {
+    "enabled": true,
+    "fileMatch": [
+      "(^|/)MODULE\\.bazel$",
+      "(^|/)WORKSPACE(|\\.bazel)$",
+      "\\.bzl$"
+    ]
+  },
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "labels": ["security"]
+  }
+}

@@ -1,0 +1,28 @@
+diff --git a/decoder/BUILD.bazel b/decoder/BUILD.bazel
+index b3dc41d..c5168f0 100644
+--- a/decoder/BUILD.bazel
++++ b/decoder/BUILD.bazel
+@@ -6,8 +6,8 @@ go_library(
+         "decoder.go",
+         "options.go",
+     ],
++    cdeps = ["@@libwebp"],
+     cgo = True,
+-    clinkopts = ["-lwebp"],
+     importpath = "github.com/kolesa-team/go-webp/decoder",
+     visibility = ["//visibility:public"],
+     deps = ["//utils"],
+diff --git a/encoder/BUILD.bazel b/encoder/BUILD.bazel
+index 65141d5..1e3dd9f 100644
+--- a/encoder/BUILD.bazel
++++ b/encoder/BUILD.bazel
+@@ -6,8 +6,8 @@ go_library(
+         "encoder.go",
+         "options.go",
+     ],
++    cdeps = ["@@libwebp"],
+     cgo = True,
+-    clinkopts = ["-lwebp"],
+     importpath = "github.com/kolesa-team/go-webp/encoder",
+     visibility = ["//visibility:public"],
+ )

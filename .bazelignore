@@ -1,0 +1,6 @@
+node_modules
+web/ts-proto-api/node_modules
+web/node_modules
+tools/ts-proto/node_modules
+.ijwb
+venv

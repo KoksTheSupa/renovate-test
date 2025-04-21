@@ -1,0 +1,71 @@
+go_sdk = use_extension("@rules_go//go:extensions.bzl", "go_sdk")
+go_sdk.download(version = "1.23.0")
+
+go_deps = use_extension("@gazelle//:extensions.bzl", "go_deps")
+go_deps.from_file(go_mod = "//:go.mod")
+use_repo(
+    go_deps,
+    "build_buf_gen_go_bufbuild_protovalidate_protocolbuffers_go",
+    "com_github_anthonynsimon_bild",
+    "com_github_aws_aws_sdk_go_v2",
+    "com_github_aws_aws_sdk_go_v2_config",
+    "com_github_aws_aws_sdk_go_v2_credentials",
+    "com_github_aws_aws_sdk_go_v2_service_s3",
+    "com_github_bufbuild_protovalidate_go",
+    "com_github_cenkalti_dominantcolor",
+    "com_github_docker_docker",
+    "com_github_docker_go_connections",
+    "com_github_doug_martin_goqu_v9",
+    "com_github_envoyproxy_go_control_plane_envoy",
+    "com_github_exaring_otelpgx",
+    "com_github_go_viper_mapstructure_v2",
+    "com_github_golang_jwt_jwt_v5",
+    "com_github_golang_migrate_migrate_v4",
+    "com_github_google_cel_go",
+    "com_github_google_go_cmp",
+    "com_github_grpc_ecosystem_go_grpc_middleware_providers_prometheus",
+    "com_github_hashicorp_consul_api",
+    "com_github_jackc_pgx_v5",
+    "com_github_jarcoal_httpmock",
+    "com_github_kolesa_team_go_webp",
+    "com_github_mbobakov_grpc_consul_resolver",
+    "com_github_prometheus_client_golang",
+    "com_github_redis_go_redis_v9",
+    "com_github_rs_zerolog",
+    "com_github_spf13_pflag",
+    "com_github_spf13_viper",
+    "com_github_stackb_rules_proto",
+    "com_github_testcontainers_testcontainers_go",
+    "com_github_testcontainers_testcontainers_go_modules_postgres",
+    "com_github_testcontainers_testcontainers_go_modules_redpanda",
+    "com_github_twmb_franz_go",
+    "com_github_twmb_franz_go_pkg_kadm",
+    "com_github_ybbus_jsonrpc_v3",
+    "in_gopkg_yaml_v2",
+    "io_opentelemetry_go_contrib_instrumentation_google_golang_org_grpc_otelgrpc",
+    "io_opentelemetry_go_otel",
+    "io_opentelemetry_go_otel_exporters_otlp_otlptrace_otlptracegrpc",
+    "io_opentelemetry_go_otel_sdk",
+    "io_opentelemetry_go_otel_trace",
+    "org_golang_google_genproto_googleapis_api",
+    "org_golang_google_genproto_googleapis_rpc",
+    "org_golang_google_grpc",
+    "org_golang_google_protobuf",
+    "org_golang_x_crypto",
+    "org_golang_x_sync",
+    "org_uber_go_mock",
+)
+go_deps.module_override(
+    patch_strip = 1,
+    patches = ["//build/bazel/patches:com_github_kolesa_team_go_webp.patch"],
+    path = "github.com/kolesa-team/go-webp",
+)
+go_deps.module_override(
+    patch_strip = 1,
+    patches = ["//build/bazel/patches:com_github_stackb_rules_proto.patch"],
+    path = "github.com/stackb/rules_proto",
+)
+go_deps.gazelle_override(
+    build_file_generation = "on",
+    path = "github.com/cncf/xds/go",
+)

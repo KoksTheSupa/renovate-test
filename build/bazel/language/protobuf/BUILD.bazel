@@ -1,0 +1,12 @@
+load("@rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "protobuf",
+    srcs = ["protobuf.go"],
+    importpath = "fliptheboard.ru/ftb/build/bazel/language/protobuf",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_stackb_rules_proto//language/protobuf",
+        "@gazelle//language",
+    ],
+)

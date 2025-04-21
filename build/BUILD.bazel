@@ -1,0 +1,4 @@
+config_setting(
+    name = "ci_build",
+    values = {"define": "CI_BUILD=1"},
+)

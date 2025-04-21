@@ -1,0 +1,12 @@
+npm = use_extension(
+    "@aspect_rules_js//npm:extensions.bzl",
+    "npm",
+    dev_dependency = True,
+)
+npm.npm_translate_lock(
+    name = "npm_ts_proto",
+    npmrc = "//tools/ts-proto:.npmrc",
+    pnpm_lock = "//tools/ts-proto:pnpm-lock.yaml",
+    verify_node_modules_ignored = "//:.bazelignore",
+)
+use_repo(npm, "npm_ts_proto")

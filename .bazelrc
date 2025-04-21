@@ -1,0 +1,17 @@
+common --enable_bzlmod=true
+common --incompatible_enable_proto_toolchain_resolution
+
+build --protocopt=--include_source_info
+build --proto_compiler=@com_google_protobuf//:protoc
+
+run --proto_compiler=@com_google_protobuf//:protoc
+
+test --test_output=errors
+test --@rules_go//go/config:race
+test --@rules_go//go/config:debug
+# test --flaky_test_attempts=3
+
+build:remote --remote_cache=grpcs://cas-mrdan4es.build-faster.nativelink.net
+build:remote --bes_backend=grpcs://bes-mrdan4es.build-faster.nativelink.net
+build:remote --bes_results_url=https://app.nativelink.com/a/8bea7128-3d74-457b-bb9e-dc0b2fa37c72/build
+build:remote --remote_timeout=600

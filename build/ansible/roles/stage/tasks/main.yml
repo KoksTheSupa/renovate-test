@@ -1,0 +1,21 @@
+---
+- name: Tear down existing services
+  community.docker.docker_compose_v2:
+    project_src: /root/ftb/
+    state: absent
+
+- name: Copy docker-compose to remote server
+  ansible.builtin.copy:
+    src: ../../docker-compose.stage.yml
+    dest: /root/ftb/docker-compose.yml
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Run docker-compose
+  community.docker.docker_compose_v2:
+    project_src: /root/ftb/
+    build: never
+    state: present
+    pull: always
+    remove_orphans: true

@@ -1,0 +1,7 @@
+diff --git a/pkg/plugin/stephenh/ts-proto/protoc-gen-ts-proto.go b/pkg/plugin/stephenh/ts-proto/protoc-gen-ts-proto.go
+index fbaa852b..a1db9e08 100644
+--- a/pkg/plugin/stephenh/ts-proto/protoc-gen-ts-proto.go
++++ b/pkg/plugin/stephenh/ts-proto/protoc-gen-ts-proto.go
+@@ -76,1 +76,1 @@ func (p *ProtocGenTsProto) Configure(ctx *protoc.PluginContext) *protoc.PluginCo
+-		Label:   label.New("build_stack_rules_proto", "plugin/stephenh/ts-proto", "protoc-gen-ts-proto"),
++		Label:   label.New("", "tools/ts-proto", "protoc-gen-ts-proto"),
