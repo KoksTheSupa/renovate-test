@@ -36,7 +36,7 @@
     "next": "^15.1.6",
     "next-intl": "^3.26.3",
     "next-themes": "^0.4.6",
-    "nice-grpc-web": "^3.3.5",
+    "nice-grpc-web": "^3.3.7",
     "normalize.css": "^8.0.1",
     "postcss": "^8.5.1",
     "protobufjs": "^7.4.0",
