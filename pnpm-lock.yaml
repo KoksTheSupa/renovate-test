@@ -75,7 +75,7 @@ importers:
         specifier: ^15.14.0
         version: 15.15.0
       next:
-        specifier: ^15.1.6
+        specifier: ^15.3.1
         version: 15.3.1(@babel/core@7.26.10)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.86.3)
       next-intl:
         specifier: ^3.26.3
@@ -163,7 +163,7 @@ importers:
         specifier: ^9.18.0
         version: 9.25.0(jiti@1.21.7)
       eslint-config-next:
-        specifier: ^15.1.6
+        specifier: ^15.3.1
         version: 15.3.1(eslint@9.25.0(jiti@1.21.7))(typescript@5.8.3)
       eslint-plugin-react-hooks:
         specifier: ^5.1.0
