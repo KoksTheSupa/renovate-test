@@ -3,25 +3,76 @@
   "extends": ["config:base"],
   "platform": "github",
   "dependencyDashboard": true,
-  "enabledManagers": ["npm", "bazel"],
+  "enabledManagers": [
+    "npm",
+    "github-actions",
+    "pip_requirements",
+    "ansible-galaxy",
+    "bazel",
+    "bazel-module",
+    "bazelisk",
+    "gomod"
+  ],
   "packageRules": [
     {
       "matchManagers": ["npm"],
       "rangeStrategy": "bump"
     },
     {
-      "matchManagers": ["bazel"],
-      "groupName": "Bazel dependencies"
+      "matchManagers": ["bazel", "bazel-module", "bazelisk"],
+      "groupName": "Bazel ecosystem"
+    },
+    {
+      "matchManagers": ["pip_requirements"],
+      "groupName": "Python dependencies"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchManagers": ["ansible-galaxy"],
+      "groupName": "Ansible Roles"
+    },
+    {
+      "matchManagers": ["gomod"],
+      "groupName": "Go modules"
     }
   ],
   "bazel": {
     "enabled": true,
     "fileMatch": [
-      "(^|/)MODULE\\.bazel$",
-      "(^|/)WORKSPACE(|\\.bazel)$",
       "\\.bazel$",
-      "\\.bzl$"
+      "\\.bzl$",
+      "^WORKSPACE(|\\.bazel)$"
     ]
+  },
+  "bazel-module": {
+    "enabled": true,
+    "fileMatch": ["^MODULE\\.bazel$"]
+  },
+  "bazelisk": {
+    "enabled": true,
+    "fileMatch": ["^\\.bazeliskrc$", "^\\..*bazelversion$"]
+  },
+  "github-actions": {
+    "enabled": true,
+    "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"]
+  },
+  "pip_requirements": {
+    "enabled": true,
+    "fileMatch": [
+      "requirements.*\\.txt$",
+      "pyproject\\.toml$"
+    ]
+  },
+  "ansible-galaxy": {
+    "enabled": true,
+    "fileMatch": ["requirements\\.ya?ml$", "roles/.*/requirements\\.ya?ml$"]
+  },
+  "gomod": {
+    "enabled": true,
+    "fileMatch": ["^go\\.mod$"]
   },
   "lockFileMaintenance": {
     "enabled": true
