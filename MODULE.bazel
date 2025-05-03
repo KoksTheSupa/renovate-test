@@ -1,23 +1,23 @@
 module(name = "ftb")
 
-bazel_dep(name = "aspect_bazel_lib", version = "2.14.0")
-bazel_dep(name = "aspect_rules_js", version = "2.1.2")
-bazel_dep(name = "bazel_features", version = "1.22.0")
-bazel_dep(name = "gazelle", version = "0.40.0")
-bazel_dep(name = "googleapis", version = "0.0.0-20240819-fe8ba054a")
+bazel_dep(name = "aspect_bazel_lib", version = "2.15.3")
+bazel_dep(name = "aspect_rules_js", version = "2.3.7")
+bazel_dep(name = "bazel_features", version = "1.29.0")
+bazel_dep(name = "gazelle", version = "0.43.0")
+bazel_dep(name = "googleapis", version = "0.0.0-20241220-5e258e33.bcr.1")
 bazel_dep(name = "rules_buf", version = "0.3.0")
-bazel_dep(name = "rules_go", version = "0.50.1")
-bazel_dep(name = "rules_multirun", version = "0.10.0")
-bazel_dep(name = "rules_nodejs", version = "6.3.2")
-bazel_dep(name = "rules_oci", version = "2.2.0")
-bazel_dep(name = "rules_pkg", version = "1.0.1")
-bazel_dep(name = "toolchains_protoc", version = "0.3.6")
+bazel_dep(name = "rules_go", version = "0.54.0")
+bazel_dep(name = "rules_multirun", version = "0.12.0")
+bazel_dep(name = "rules_nodejs", version = "6.3.5")
+bazel_dep(name = "rules_oci", version = "2.2.6")
+bazel_dep(name = "rules_pkg", version = "1.1.0")
+bazel_dep(name = "toolchains_protoc", version = "0.4.1")
 
 # Не обновлять, пока в bazel не впилят precompiled protoc!
 # https://github.com/protocolbuffers/protobuf/issues/19558
 bazel_dep(name = "rules_proto", version = "6.0.2")
-bazel_dep(name = "rules_python", version = "0.36.0")
-bazel_dep(name = "rules_distroless", version = "0.3.8")
+bazel_dep(name = "rules_python", version = "0.40.0")
+bazel_dep(name = "rules_distroless", version = "0.5.1")
 
 protoc = use_extension("@toolchains_protoc//protoc:extensions.bzl", "protoc")
 protoc.toolchain(
@@ -33,9 +33,9 @@ http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "ht
 
 http_archive(
     name = "protovalidate",
-    sha256 = "ccb3952c38397d2cb53fe841af66b05fc012dd17fa754cbe35d9abb547cdf92d",
-    strip_prefix = "protovalidate-0.7.1",
-    url = "https://github.com/bufbuild/protovalidate/archive/refs/tags/v0.7.1.tar.gz",
+    sha256 = "85561d0b3a95c73c672f2c9cd39b2da6bd4fa95634fa961922b04f65a97b71cc",
+    strip_prefix = "protovalidate-0.11.1",
+    url = "https://github.com/bufbuild/protovalidate/archive/refs/tags/v0.11.1.tar.gz",
 )
 
 http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
@@ -44,8 +44,8 @@ http_file(
     name = "walg",
     downloaded_file_path = "wal-g",
     executable = True,
-    sha256 = "0b46652f23fb4d09fa08f3d536b72806e597c4e20d0a09d960d6337bc2368e8b",
-    url = "https://github.com/wal-g/wal-g/releases/download/v3.0.3/wal-g-pg-ubuntu-20.04-amd64",
+    sha256 = "0ed747c95d2ee3ab0ab9319e8dfa7b16af425eba6b022870130dbdc35aa346c1",
+    url = "https://github.com/wal-g/wal-g/releases/download/v3.0.7/wal-g-pg-ubuntu-20.04-amd64",
 )
 
 apt = use_extension("@rules_distroless//apt:extensions.bzl", "apt")
