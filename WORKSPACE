@@ -3,11 +3,11 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 http_archive(
     name = "libwebp",
     build_file = "//third-party/webp:libwebp.BUILD",
-    sha256 = "01bcde6a40a602294994050b81df379d71c40b7e39c819c024d079b3c56307f4",
-    strip_prefix = "libwebp-1.2.1",
+    sha256 = "668c9aba45565e24c27e17f7aaf7060a399f7f31dba6c97a044e1feacb930f37",
+    strip_prefix = "libwebp-1.5.0",
     urls = [
-        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/webmproject/libwebp/archive/v1.2.1.tar.gz",
-        "https://github.com/webmproject/libwebp/archive/v1.2.1.tar.gz",
+        "https://storage.googleapis.com/mirror.tensorflow.org/github.com/webmproject/libwebp/archive/v1.5.0.tar.gz",
+        "https://github.com/webmproject/libwebp/archive/v1.5.0.tar.gz",
     ],
 )
 
