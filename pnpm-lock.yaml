@@ -93,8 +93,8 @@ importers:
         specifier: ^8.5.1
         version: 8.5.3
       protobufjs:
-        specifier: ^7.4.0
-        version: 7.5.0
+        specifier: ^7.5.1
+        version: 7.5.1
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -3525,8 +3525,8 @@ packages:
   property-expr@2.0.6:
     resolution: {integrity: sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==}
 
-  protobufjs@7.5.0:
-    resolution: {integrity: sha512-Z2E/kOY1QjoMlCytmexzYfDm/w5fKAiRwpSzGtdnXW1zC88Z2yXazHHrOtwCzn+7wSxyE8PYM4rvVcMphF9sOA==}
+  protobufjs@7.5.1:
+    resolution: {integrity: sha512-3qx3IRjR9WPQKagdwrKjO3Gu8RgQR2qqw+1KnigWhoVjFqegIj1K3bP11sGqhxrO46/XL7lekuG4jmjL+4cLsw==}
     engines: {node: '>=12.0.0'}
 
   punycode@2.3.1:
@@ -7791,7 +7791,7 @@ snapshots:
 
   property-expr@2.0.6: {}
 
-  protobufjs@7.5.0:
+  protobufjs@7.5.1:
     dependencies:
       '@protobufjs/aspromise': 1.1.2
       '@protobufjs/base64': 1.1.2
