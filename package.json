@@ -25,7 +25,7 @@
     "@radix-ui/react-slider": "^1.2.2",
     "@radix-ui/react-switch": "^1.1.4",
     "@radix-ui/react-tooltip": "^1.1.8",
-    "@tanstack/react-query": "^5.64.2",
+    "@tanstack/react-query": "^5.75.2",
     "@yornaath/batshit": "^0.10.1",
     "abort-controller-x": "^0.4.3",
     "autoprefixer": "10.4.15",
